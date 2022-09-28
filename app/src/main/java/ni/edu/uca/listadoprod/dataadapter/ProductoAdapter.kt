@@ -7,10 +7,8 @@ import ni.edu.uca.listadoprod.dataclass.Producto
 import ni.edu.uca.listadoprod.databinding.ItemlistaBinding
 
 class ProductoAdapter(
-    val listProd: List<Producto>,
-    private val onClickListener: (Producto) -> Unit,
-    private val onClickDelete: (Int) -> Unit,
-    private val onClickUpdate: (Int) -> Unit
+    val listProd: List<Producto>, private val onClickListener: (Producto) -> Unit,
+    private val onClickDelete: (Int) -> Unit, private val onClickUpdate: (Int) -> Unit
 ) :
     RecyclerView.Adapter<ProductoAdapter.ProductoHolder>() {
     inner class ProductoHolder(val binding: ItemlistaBinding) :

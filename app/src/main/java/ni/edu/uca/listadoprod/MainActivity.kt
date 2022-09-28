@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import ni.edu.uca.listadoprod.dataadapter.ProductoAdapter
 import ni.edu.uca.listadoprod.dataclass.Producto
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         iniciar()
     }
 
+    /*Función para limpiar los editText*/
     private fun limpiar() {
         with(binding) {
             etID.setText("")
@@ -30,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /*Función para agregar un registro*/
     private fun agregarProd() {
         with(binding) {
             try {
@@ -53,8 +56,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /*Función para el uso de toEditable*/
     fun String.toEditable(): Editable = Editable.Factory.getInstance().newEditable(this)
 
+    /*Función para editar un registro*/
     fun onUpdateItem(position: Int) {
         with(binding) {
             val id: Int = etID.text.toString().toInt()
@@ -64,8 +69,10 @@ class MainActivity : AppCompatActivity() {
             listaProd.set(position, prod)
             rcvLista.adapter?.notifyItemRemoved(position)
         }
+
     }
 
+    /*Función para seleccionar un registro y se añada a los editText*/
     fun onItemSelected(producto: Producto) {
         with(binding) {
             etID.text = producto.id.toString().toEditable()
@@ -74,13 +81,24 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /*Función para eliminar un registro con su alerta*/
     fun onDeleteItem(position: Int) {
-        with(binding) {
-            listaProd.removeAt(position)
-            rcvLista.adapter?.notifyItemRemoved(position)
-        }
+        val builder = AlertDialog.Builder(this@MainActivity)
+        builder.setMessage("¿Desea realmente eliminar el registro?")
+            .setCancelable(false)
+            .setPositiveButton("Si") { dialog, id ->
+                with(binding) {
+                    listaProd.removeAt(position)
+                    rcvLista.adapter?.notifyItemRemoved(position)
+                }
+            }.setNegativeButton("No") { dialog, id ->
+                dialog.dismiss()
+            }
+        val alert = builder.create()
+        alert.show()
     }
 
+    /*Función para definir las funciones que ocuparan los botones creados*/
     private fun iniciar() {
         binding.btnAgregar.setOnClickListener {
             agregarProd()
