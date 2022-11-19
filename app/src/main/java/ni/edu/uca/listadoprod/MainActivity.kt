@@ -25,10 +25,9 @@ class MainActivity : AppCompatActivity() {
     /*Función para limpiar los editText*/
     private fun limpiar() {
         with(binding) {
-            etID.setText("")
-            etNombreProd.setText("")
+            etNombre.setText("")
+            etCantidad.setText("")
             etPrecio.setText("")
-            etID.requestFocus()
         }
     }
 
@@ -36,10 +35,12 @@ class MainActivity : AppCompatActivity() {
     private fun agregarProd() {
         with(binding) {
             try {
-                val id: Int = etID.text.toString().toInt()
-                val nombre: String = etNombreProd.text.toString()
+                val nombre: String = etNombre.text.toString()
+                val cantidad: Double = etCantidad.text.toString().toDouble()
                 val precio: Double = etPrecio.text.toString().toDouble()
-                val prod = Producto(id, nombre, precio)
+                val t = cantidad.toString().toDouble()*precio.toString().toDouble()
+                val total = t.toString().toDouble()
+                val prod = Producto(nombre, cantidad, precio, total)
                 listaProd.add(prod)
             } catch (ex: Exception) {
                 Toast.makeText(
@@ -62,10 +63,12 @@ class MainActivity : AppCompatActivity() {
     /*Función para editar un registro*/
     fun onUpdateItem(position: Int) {
         with(binding) {
-            val id: Int = etID.text.toString().toInt()
-            val nombre: String = etNombreProd.text.toString()
+            val nombre: String = etNombre.text.toString()
+            val cantidad: Double = etCantidad.text.toString().toDouble()
             val precio: Double = etPrecio.text.toString().toDouble()
-            val prod = Producto(id, nombre, precio)
+            val t = cantidad.toString().toDouble()*precio.toString().toDouble()
+            val total = t.toString().toDouble()
+            val prod = Producto(nombre, cantidad, precio, total)
             listaProd.set(position, prod)
             rcvLista.adapter?.notifyItemRemoved(position)
         }
@@ -75,9 +78,9 @@ class MainActivity : AppCompatActivity() {
     /*Función para seleccionar un registro y se añada a los editText*/
     fun onItemSelected(producto: Producto) {
         with(binding) {
-            etID.text = producto.id.toString().toEditable()
-            etNombreProd.text = producto.nombre.toEditable()
-            etPrecio.text = producto.precio.toString().toEditable()
+            etNombre.text = producto.nombre.toString().toEditable()
+            etCantidad.text = producto.precio.toString().toEditable()
+            etPrecio.text = producto.cantidad.toString().toEditable()
         }
     }
 
@@ -105,10 +108,11 @@ class MainActivity : AppCompatActivity() {
         }
         binding.btnLimpiar.setOnClickListener {
             with(binding) {
-                etID.setText("")
-                etNombreProd.setText("")
+                etNombre.setText("")
+                etCantidad.setText("")
                 etPrecio.setText("")
             }
         }
     }
 }
+

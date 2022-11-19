@@ -3,58 +3,97 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="200dp"
-    android:background="@drawable/bordes"
-    >
+    android:background="@drawable/bordes">
 
     <TextView
-        android:textStyle="bold"
-        android:fontFamily="sans-serif"
-        android:textColor="@color/black"
         android:id="@+id/tvCodProd"
         android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="1dp"
         android:layout_marginBottom="10dp"
+        android:fontFamily="sans-serif"
         android:gravity="center"
         android:text="0"
+        android:textAlignment="center"
+        android:textColor="@color/black"
         android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/tvNombreProd"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintRight_toLeftOf="@+id/tvNombre"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:textStyle="bold"
+        android:id="@+id/tvSimbolo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="10dp"
         android:fontFamily="sans-serif"
-        android:id="@+id/tvNombreProd"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:text="*"
         android:textColor="@color/black"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tvCodProd2"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="1dp"
+        android:textAlignment="center"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tvNombre"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="100dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
+        android:fontFamily="sans-serif"
         android:text="Nombre"
+        android:textColor="@color/black"
         android:textSize="25sp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toRightOf="@id/tvCodProd"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:textStyle="bold"
-        android:fontFamily="sans-serif"
-        android:textColor="@color/black"
         android:id="@+id/tvPrecioProd"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="150dp"
+        android:fontFamily="sans-serif"
         android:text="0.00"
+        android:textColor="@color/black"
         android:textSize="25sp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toRightOf="@id/tvCodProd"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvNombreProd" />
+        app:layout_constraintTop_toBottomOf="@id/tvNombre" />
 
     <Button
         android:id="@+id/btnEliminar"
@@ -66,8 +105,8 @@
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintRight_toRightOf="@id/tvNombreProd"
-        app:layout_constraintTop_toBottomOf="@id/tvNombreProd" />
+        app:layout_constraintRight_toRightOf="@id/tvNombre"
+        app:layout_constraintTop_toBottomOf="@id/tvNombre" />
 
     <Button
         android:id="@+id/btnEditar"
@@ -80,8 +119,7 @@
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/btnEliminar"
         app:layout_constraintLeft_toLeftOf="@id/btnEliminar"
-        />
+        app:layout_constraintTop_toBottomOf="@id/btnEliminar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

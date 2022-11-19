@@ -20,9 +20,10 @@ class ProductoAdapter(
             onClickUpdate: (Int) -> Unit
         ) {
             with(binding) {
-                tvCodProd.text = producto.id.toString()
-                tvNombreProd.text = producto.nombre
-                tvPrecioProd.text = producto.precio.toString()
+                tvNombre.text = producto.nombre.toString()
+                tvCodProd2.text = producto.cantidad.toString()
+                tvCodProd.text = producto.precio.toString()
+                tvPrecioProd.text = producto.total.toString()
                 itemView.setOnClickListener { onClickListener(producto) }
                 binding.btnEliminar.setOnClickListener { onClickDelete(adapterPosition) }
                 binding.btnEditar.setOnClickListener { onClickUpdate(adapterPosition) }
